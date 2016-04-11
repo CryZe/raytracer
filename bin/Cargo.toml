@@ -1,0 +1,16 @@
+[package]
+name = "raytracer"
+version = "0.1.0"
+authors = ["Christopher Serr <cryze92@gmail.com>"]
+
+[dependencies.libraytracer]
+path = "../lib"
+
+[dependencies]
+piston = "*"
+piston2d-graphics = "*"
+pistoncore-glutin_window = "*"
+piston2d-opengl_graphics = "*"
+image = "0.8.0"
+palette = "0.2.0"
+nalgebra = "0.6.0"
