@@ -1,2 +1,4 @@
 target
 lib/Cargo.lock
+*.bk
+/cli/rendered.png

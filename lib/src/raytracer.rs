@@ -26,7 +26,9 @@ impl SamplingConfig {
     }
 
     pub fn sample_count(&self, depth: usize) -> usize {
-        f32::round(self.starting_samples as f32 * f32::powi(self.scale_factor, -(depth as i32))) as usize
+        f32::round(self.starting_samples as f32 *
+                   f32::powi(self.scale_factor,
+                             -(depth as i32))) as usize
     }
 }
 
@@ -101,13 +103,12 @@ impl<BrdfType: Brdf + 'static> RayTracer<BrdfType> {
                             n_dot_l = na::dot(&collision.normal, &direction);
                         }
 
-                        let new_ray = Ray::new(collision.position + collision.normal * 0.001, direction);
+                        let new_ray = Ray::new(collision.position + collision.normal * 0.001,
+                                               direction);
                         let ray_brightness = Self::trace(entities, &new_ray, depth + 1, config);
                         let mut brdf = collision.brdf
-                                                .solve(direction,
-                                                       collision.normal,
-                                                       view_direction);
-                        //brdf = brdf.saturate().fix_nan();
+                                                .solve(direction, collision.normal, view_direction);
+                        // brdf = brdf.saturate().fix_nan();
                         brightness = brightness + brdf * ray_brightness * n_dot_l;
                     }
                 }
@@ -154,7 +155,8 @@ impl<BrdfType: Brdf + 'static> RayTracer<BrdfType> {
                 scope.execute(move || {
                     for (coord, cell) in chunk {
                         let ray = camera.get_ray_for_coordinate(coord);
-                        *cell = *cell * factor_old + Self::trace(entities, &ray, 0, sampling_config) * factor_new;
+                        *cell = *cell * factor_old +
+                                Self::trace(entities, &ray, 0, sampling_config) * factor_new;
                     }
                 });
             }

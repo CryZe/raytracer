@@ -23,7 +23,11 @@ impl Clamp for f32 {
     }
 
     fn fix_nan(&self) -> f32 {
-        if *self == f32::NAN { 0.0 } else { *self } 
+        if *self == f32::NAN {
+            0.0
+        } else {
+            *self
+        }
     }
 }
 
@@ -39,6 +43,8 @@ impl Clamp for Rgb {
     }
 
     fn fix_nan(&self) -> Rgb {
-        Rgb::new(self.red.fix_nan(), self.green.fix_nan(), self.blue.fix_nan())
+        Rgb::new(self.red.fix_nan(),
+                 self.green.fix_nan(),
+                 self.blue.fix_nan())
     }
 }

@@ -11,6 +11,8 @@ pub trait Entity {
 
 pub mod sphere;
 pub mod camera;
+pub mod mesh;
 
 pub use self::sphere::Sphere;
 pub use self::camera::Camera;
+pub use self::mesh::{Triangle, Mesh};

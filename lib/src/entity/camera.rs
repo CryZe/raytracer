@@ -33,7 +33,7 @@ impl Camera {
         let origin = self.position;
 
         let d = 1.0 / f32::tan(self.field_of_view / 2.0);
-        
+
         let x = 2.0 * x / width - 1.0;
         let y = -2.0 * y / height + 1.0;
 

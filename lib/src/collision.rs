@@ -12,7 +12,7 @@ impl<'a, BrdfType: Brdf + 'static> Collision<'a, BrdfType> {
         Collision {
             position: position,
             normal: normal,
-            brdf: brdf
+            brdf: brdf,
         }
     }
 }
